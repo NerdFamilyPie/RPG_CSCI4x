@@ -39,7 +39,7 @@ string TOUPPER(string userString) {
 }
 
 
-// Searches user input for a keyword.
+// Searches user input for a keyword. FIX ME: needs to be changed to call a vector<string> &keyWord for optimization.
 bool WRDSRCH(string userString, string keyPhrase) {
         if (userString.find(keyPhrase) != string::npos) {
                 return 1;
