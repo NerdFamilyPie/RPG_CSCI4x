@@ -7,7 +7,7 @@ using namespace std;
 
 
 int main() {
-  cout << "Hello World"
+  cout << "Hello World";
 
 // GAME START: You recieve a call from Star Command detailing a mission to deliver a valuable package to SC base in a nearby star system.
 //
