@@ -5,6 +5,50 @@
 #include <algorithm>
 using namespace std;
 
+// Modifies type speed for conversational effect.
+void TYPER(string GM) {
+        for (int i = 0; i < GM.size(); i++) {
+                cout << GM.at(i);
+                cout.flush();
+                usleep(51'000); /*51'000*/
+        }
+}
+
+// Inputs pause for dramatic effect.
+void NarrP() {
+        usleep (1'000'000);  /*1'500'000*/
+}
+
+
+void elipse() {
+        string E = ". . . ";
+        for (int i = 0; i < E.size(); i++) {
+                cout << E.at(i);
+                cout.flush();
+                usleep(270'000); /*270'000*/
+        }
+}
+
+
+// Changes input to all caps.
+string TOUPPER(string userString) {
+        for (size_t i = 0; i < userString.size(); i++) {
+        userString.at(i) = toupper(userString.at(i));
+        }
+        return userString;
+}
+
+
+// Searches user input for a keyword.
+bool WRDSRCH(string userString, string keyPhrase) {
+        if (userString.find(keyPhrase) != string::npos) {
+                return 1;
+        }
+        else {
+                return 0;
+        }
+}
+
 
 int main() {
   cout << "Hello World";
