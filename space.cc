@@ -138,7 +138,7 @@ int main(/*char &locale, bool &warp_D_online, bool &first_flight, int &crash_row
 		if (c == 'D' or c == RIGHT_ARROW) {
 			inputCounter++;
 			col++;
-			if (col > world_map.size() - 1) col = 1;
+			if (col > world_map.at(row).size() - 2) col = 1;
 			move_titan(titan_row, titan_col);
 		}
 		print_world(row, col, titan_row, titan_col, Jrow, Jcol, Arow, Acol, Erow, Ecol);
