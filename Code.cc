@@ -51,10 +51,11 @@ bool WRDSRCH(string userString, string keyPhrase) {
 
 
 int main() {
-  cout << "Hello World";
+  string cap = "";
 
 // GAME START: You recieve a call from Star Command detailing a mission to deliver a valuable package to SC base in a nearby star system.
-//
+        TYPER("Welcome to the Command Ship BLARBLAR, my name is Croach and I am the First Mate here. Thank you for stepping in as emergency captian while Captian Jemin is on leave.\nI'm afraid that I have not caught your name yet Captian");
+        cin >> string;
 //
 // Before boarding the spacecraft, the place must enter their "userName" and must solve a puzzle in order to 'remember' your password (1st puzzle).
 //
