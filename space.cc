@@ -120,21 +120,25 @@ int main(/*char &locale, bool &warp_D_online, bool &first_flight, int &crash_row
 		if (c == 'W' or c == UP_ARROW) {
 			inputCounter++;
 			row--;
+			if (row < 1) row = world_map.size() - 2;
 			move_titan(titan_row, titan_col);
 		}
-		if (c == 'S' or c == DOWN_ARROW) {
+		if (c == 'S' or c == DOWN_ARROW) {	
 			inputCounter++;
 			row++;
+			if (row >= world_map.size() - 1) row = 1;
 			move_titan(titan_row, titan_col);
 		}
 		if (c == 'A' or c == LEFT_ARROW) {
 			inputCounter++;
 			col--;
+			if (col < 1) col = world_map.at(row).size() - 2;
 			move_titan(titan_row, titan_col);
 		}
 		if (c == 'D' or c == RIGHT_ARROW) {
 			inputCounter++;
 			col++;
+			if (col > world_map.size() - 1) col = 1;
 			move_titan(titan_row, titan_col);
 		}
 		print_world(row, col, titan_row, titan_col, Jrow, Jcol, Arow, Acol, Erow, Ecol);
