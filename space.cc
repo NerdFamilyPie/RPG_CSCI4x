@@ -79,21 +79,22 @@ void print_world(size_t player_row, size_t player_col, size_t titan_row, size_t 
 
 const size_t tr1 = 4, tr2 = 5, tr3 = 6, tc1 = 4, tc2 = 5, tc3 = 6, tc4 = 7, tc5 = 8;
 
-void move_titan(size_t &titan_row, size_t &titan_col) {
+int move_titan(size_t &titan_row, size_t &titan_col) {
 	if (titan_row == tr1) {
-		if (titan_col == tc2) titan_col = tc3; 
-		else if (titan_col == tc3) titan_col = tc4;
-		else if (titan_col == tc4) titan_col = tc5, titan_row = tr2; //error
+		if (titan_col == tc2) {titan_col = tc3;}
+		else if (titan_col == tc3) {titan_col = tc4;}
+		else if (titan_col == tc4) {titan_col = tc5, titan_row = tr2; return 0;}
 	}
 	if (titan_row == tr2) {
-		if (titan_col == tc5) titan_col = tc4, titan_row = tr3; // error
-		else if (titan_col == tc1) titan_col = tc2, titan_row = tr1;
+		if (titan_col == tc5) {titan_col = tc4, titan_row = tr3;}
+		else if (titan_col == tc1) {titan_col = tc2, titan_row = tr1; return 0;}
 	}
 	if (titan_row == tr3) {
-		if (titan_col == tc4) titan_col = tc3;
-		else if (titan_col == tc3) titan_col = tc2;
-		else if (titan_col == tc2) titan_col = tc1, titan_row = tr2;
+		if (titan_col == tc4) {titan_col = tc3;}
+		else if (titan_col == tc3) {titan_col = tc2;}
+		else if (titan_col == tc2) {titan_col = tc1, titan_row = tr2;}
 	}
+	return 0;
 }
 
 bool first_flight = 1; //this will be one at game start, then 0 for the rest of the game
@@ -119,27 +120,59 @@ int main(/*char &locale, bool &warp_D_online, bool &first_flight, int &crash_row
 		int c = toupper(quick_read());
 		if (c == 'W' or c == UP_ARROW) {
 			inputCounter++;
+			move_titan(titan_row, titan_col);
+			if (row == titan_row and col == titan_col) {
+                                set_raw_mode(false);
+                                show_cursor(true);
+                                movecursor(0,0);
+                                clearscreen();
+                                locale = 'T';
+                                return 'T';
+                        }
 			row--;
 			if (row < 1) row = world_map.size() - 2;
-			move_titan(titan_row, titan_col);
 		}
 		if (c == 'S' or c == DOWN_ARROW) {	
 			inputCounter++;
+			move_titan(titan_row, titan_col);
+			if (row == titan_row and col == titan_col) {
+                                set_raw_mode(false);
+                                show_cursor(true);
+                                movecursor(0,0);
+                                clearscreen();
+                                locale = 'T';
+                                return 'T';
+                        }
 			row++;
 			if (row >= world_map.size() - 1) row = 1;
-			move_titan(titan_row, titan_col);
 		}
 		if (c == 'A' or c == LEFT_ARROW) {
 			inputCounter++;
+			move_titan(titan_row, titan_col);
+			if (row == titan_row and col == titan_col) {
+				set_raw_mode(false);
+				show_cursor(true);
+				movecursor(0,0);
+				clearscreen();
+				locale = 'T';
+				return 'T';
+			}
 			col--;
 			if (col < 1) col = world_map.at(row).size() - 2;
-			move_titan(titan_row, titan_col);
 		}
 		if (c == 'D' or c == RIGHT_ARROW) {
 			inputCounter++;
+			move_titan(titan_row, titan_col);
+			if (row == titan_row and col == titan_col) {
+                                set_raw_mode(false);
+                                show_cursor(true);
+                                movecursor(0,0);
+                                clearscreen();
+                                locale = 'T';
+                                return 'T';
+                        }
 			col++;
 			if (col > world_map.at(row).size() - 2) col = 1;
-			move_titan(titan_row, titan_col);
 		}
 		print_world(row, col, titan_row, titan_col, Jrow, Jcol, Arow, Acol, Erow, Ecol);
 		//move_titan(titan_row, titan_col); //makes constant orbit while stationary
