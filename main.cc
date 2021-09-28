@@ -241,6 +241,14 @@ void TYPR(string GM) {
         }
 }
 
+// TYPER function for computers voice
+void TYPERCOM(string GM) {
+        for (int i = 0; i < GM.size(); i++) {
+                cout << GM.at(i);
+                cout.flush();
+                usleep(54'000); /*54'000*/
+        }
+}
 
 // Same, but faster
 void TYPERFAST(string GM) {
@@ -325,7 +333,7 @@ int main() {
 	for(int i = 0; i < 3; i++) cout << endl;
 	elipse();
 	TYPER("It's approximately 0600 hours."); NarrP(); TYPR("Star Date: 46436.3014"); elipse(); cout << endl; cout << endl;
-	TYPER("The pinnacle of coffee scents fills your nostrils."); NarrP();
+	TYPER("The pinnacle of coffee aroma fills your nostrils."); elipse();
 	TYPR("This wasn't prepared in a replicator"); elipse(); cout << endl;
        	TYPER("You are sitting on the rooftop balcony of the");
 	TYPER("best coffee shop in the Federation."); NarrP(); cout << endl;
@@ -403,7 +411,7 @@ int main() {
 		if (WRDSRCH(action, key_word_advice)) {
 			// HELP1();
 			TYPR("We are currently in "); TYPR(location_ship); TYPER("."); NarrP();
-			TYPER("If the ship gets hailed, you can give the order ");
+			TYPER("If the ship gets hailed, you can give the order: ");
 			TYPER("\"on screen.\""); NarrP();
 			TYPER("We need to begin the mission by taking off.");
 		}
@@ -415,7 +423,7 @@ int main() {
 				TOUPPER(action);
 				if (WRDSRCH(action, key_word_answer)) {
 					TYPER("It's General Pepper!"); NarrP();
-					TYPR("GENERAL: "); NarrP(); TYPER("Morning Captain! This mission will be pretty routine.");
+					TYPR("GENERAL: "); NarrP(); TYPR("Morning Captain!"); NarrP; TYPER(" This mission will be pretty routine.");
 					TYPER("We just need you to deliver a package to our base in Andromeda."); NarrP();
 					TYPER("Do be sure to navigate your ship to the edge of the solar system ");
 					TYPER("before jumping past warp-1."); NarrP();
@@ -424,7 +432,7 @@ int main() {
 					elipse(); TYPER("*click*\a");
 					NarrP(); cout << endl; TYPER("The ship's engines are warmed and everything is in order."); NarrP();
 					TYPER("The ship leaves the dock and begins it's maiden voyage!");
-					elipse(); TYPR("COMMANDER: "); TYPER("Hey Cap, "); NarrP(); TYPER("Once we get into space, you ought to take the helm and show ");
+					elipse(); cout << endl; TYPR("COMMANDER: "); TYPR("Hey Cap, "); NarrP(); TYPER("Once we get into space, you ought to take the helm and show ");
 					TYPER("us some of those piloting skills you're famous for!");
 					TYPR("Pilot: "); NarrP(); TYPER("Yes Captain! Please take the helm!"); NarrP();
 					elipse(); cout << endl;
@@ -457,11 +465,92 @@ int main() {
 
 	// After crash
 	TYPER("YOU HIT AN ASTEROID AND DAMAGED THE SHIP!!!"); 
-	NarrP(); cout << endl;
+	NarrP(); TYPER("The ship trembles violently"); elipse(); cout << endl;
+	TYPR("COMMANDER: "); NarrP(); TYPER("Blimey! That was a big one!");
+	TYPR("Computer!"); NarrP(); cout << "\a"; TYPER(" Status report!"); NarrP();
+	TYPER("COMPUTER: "); NarrP(); TYPERCOM("SIGNIFICANT DAMAGE SUSTAINED"); elipse(); cout << endl;
+	TYPERCOM("ALL CREW MEMBERS ACCOUNTED FOR"); elipse(); cout << endl; TYPERCOM("SOME MINOR INJURIES SUSTAINED"); elipse(); cout << endl;
+	TYPERCOM("SHIELDS AT 50%"); elipse(); cout << endl;
+	TYPERCOM("STRUCTURAL INTEGRITY AT 70%"); elipse(); cout << endl;
+	TYPERCOM("ENGINES OFFLINE, BUT UNDAMAGED"); elipse(); cout << endl;
+	TYPERCOM("WARPDRIVE DAMAGED AND INOPERABLE"); elipse(); cout << endl;
+	TYPERCOM("END REPORT."); NarrP(); cout << "\a" << endl << endl;
+	
+	location_ship = "Engineering Bay";
+	TYPR("COMMANDER: "); NarrP(); TYPER("Looks like we are going to have to go to ");
+	TYPER("engineering bay and see what's going on!"); NarrP();
+	elipse(); cout << endl;
+	TYPER("You arrive in the engineering bay."); NarrP();
+	TYPR("CHEIF OF ENGINEERING: "); NarrP(); TYPR("Hey Captain!"); NarrP(); TYPER(" We have a huge mess on our hands!"); NarrP();
+	TYPER("Not sure how it's possible we hit an object that big,"); 
+	TYPER("but all propulsion systems are down!"); NarrP();
+	TYPR("I don't think the engine is too bad, just needs a little kickstart"); elipse(); cout << endl;
+	TYPER("Think you and the Commander can handle it while I try to get");
+        TYPER("this warpdrive back online?");
+	elipse(); cout << endl;
+	
+	// NEEDS ENGINE REPAIR PUZZLE. Feel free to change above bracket of text for continuity.
+
+	TYPER("The engine is back online!"); NarrP();
+	TYPR("You return to the Command Bay"); elipse(); cout << endl;
+	location_ship = "Command Bay";
+	TYPR("COMMANDER: "); NarrP(); TYPER("I just recieved word from the chief of engineering."); NarrP();
+	TYPER("They say we can go to warp-1, but we will need a new warpdrive ");
+	TYPER("if we are goin to make it to Andromeda!"); NarrP();
+	elipse(); cout << endl;
+	while (true) {
+	TYPER("What would you like to do?");
+	getline(cin, action);
+	TOUPPER(action);
+		if (WRDSRCH(action, key_word_advice)) {
+			TYPR("COMMANDER: "); elipse(); TYPER("There's only one place I know of where we can get a new ");
+			TYPR("warpdrive without needing to alert the general"); elipse(); cout << endl << endl;
+			TYPER("You feel that the Commander has your best interests at heart."); NarrP(); cout << endl;
+			TYPR("COMMANDER: "); NarrP(); elipse(); TYPER("Did you ever wonder why Star Command never put a base ");
+			TYPR("on the Jupiter moon Titan?"); NarrP(); TYPER(" Despite it being far more terraformable than Mars?"); NarrP();
+			TYPR("Well there lives there an archaic relic of humanity's dark past"); elipse(); cout << endl;
+			TYPER("Star Command was too benevolent to destroy it, "); TYPER("and in time it proved to be a hotspot for those greedy Ferengi."); NarrP();
+			elipse(); TYPER("If we go there, I'm sure we can strike a deal and get a new warpdrive.");
+		}
+		else if (WRDSRCH(action, key_word_launch)) {SPACE(locale, warp_D_online, first_flight, crash_row, crash_col); break;}
+		else TYPER("You can't do that now!");
+	}
+
+	// INSERT PASSWORD PUZZLE TO ENTER TITAN AIRSPACE. At the end of this function, be sure to include that "warp_D_online = 1;" so that the player may access Andromeda on the space map.
+
+	TYPER("You land safely on Titan.");
+
 }
 
 
-	
+/*	vecort<string> SPOCK {
+"                   :                                 :    ",
+"                 :                                   :    ",
+"                 :  RRVIttIti+==iiii++iii++=;:,       :   ",
+"                 : IBMMMMWWWWMMMMMBXXVVYYIi=;:,        :  ",
+"                 : tBBMMMWWWMMMMMMBXXXVYIti;;;:,,      :  ",
+"                 t YXIXBMMWMMBMBBRXVIi+==;::;::::       , ",
+"                ;t IVYt+=+iIIVMBYi=:,,,=i+=;:::::,      ;;",
+"                YX=YVIt+=,,:=VWBt;::::=,,:::;;;:;:     ;;;",
+"                VMiXRttItIVRBBWRi:.tXXVVYItiIi==;:   ;;;; ",
+"                =XIBWMMMBBBMRMBXi;,tXXRRXXXVYYt+;;: ;;;;; ",
+"                 =iBWWMMBBMBBWBY;;;,YXRRRRXXVIi;;;:;,;;;= ",
+"                  iXMMMMMWWBMWMY+;=+IXRRXXVYIi;:;;:,,;;=  ",
+"                  iBRBBMMMMYYXV+:,:;+XRXXVIt+;;:;++::;;;  ",
+"                  =MRRRBMMBBYtt;::::;+VXVIi=;;;:;=+;;;;=  ",
+"                   XBRBBBBBMMBRRVItttYYYYt=;;;;;;==:;=    ",
+"                    VRRRRRBRRRRXRVYYIttiti=::;:::=;=      ",
+"                     YRRRRXXVIIYIiitt+++ii=:;:::;==       ",
+"                     +XRRXIIIIYVVI;i+=;=tt=;::::;:;       ",
+"                      tRRXXVYti++==;;;=iYt;:::::,;;       ",
+"                       IXRRXVVVVYYItiitIIi=:::;,::;       ",
+"                        tVXRRRBBRXVYYYIti;::::,::::       ",
+"                         YVYVYYYYYItti+=:,,,,,:::::;      ",
+"                         YRVI+==;;;;;:,,,,,,,:::::::      ",
+};
+	for (int i = 0; i < SPOCK.size(); i++) {
+		cout << SPOCK.at(i) << endl;
+	}*/
 
 // GAME START: You recieve a call from Star Command detailing a mission to deliver a valuable package to SC base in a nearby star system.
 //
