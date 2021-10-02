@@ -22,7 +22,7 @@ int puzzle1(){
       cin >> test;
     }
     if (test == "little"){
-      cout << "That is correct";
+      cout << "That is correct\n";
       loop = TRUE;
       return 0;
     
@@ -30,7 +30,22 @@ int puzzle1(){
 }
   int puzzle2(){
     \\ This is the puzzle to restore fuel to the engine
-      cout << "Here is where we put so sort of dialouge about how we need to vent reserve fuel to the engine if we want to make it to the moon\n";
-    
+      bool loop = FALSE;
+      int ans1 = 0;
+      int ans2 = 0;
+      int ans3 = 0;
+      cout << "Here is where we put so sort of dialouge about how we need to vent reserve fuel to the engine if we want to make it to the moon\n "
+      "So you need to input the passcodes for the three compartments of raw material that we need to mix together to create more fuel.\n"
+      "For each passcode you will be asked a simple math riddle to make sure that you are competent enough to operate the fuel mixology.";
+    cout << "The first riddle is:\n";
+    while (loop){
+      cout << "What number multiplied by itself and divided by one hundred is equal to four?\n";
+      cin ans1;
+      if (!ans1){cout << "Invalid Input, Please Try Again"; continue;}
+      if (
+                 
+    }
+    \\20*20/100=4
+      \\
     
   }
